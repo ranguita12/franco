@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Art Portfolio — Exploring perception, time and inner chaos" />
+  <title>Art Portfolio — Franco Yazigi</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Page loader -->
+  <div class="page-loader" id="pageLoader">
+    <div class="loader-bar"></div>
+    <span class="loader-name">Franco Yazigi</span>
+  </div>
+
+  <!-- Custom cursor -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- =============================================
+       NAVBAR
+       ============================================= -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#home" class="nav-logo"><em>Franco Yazigi</em></a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#final-project">Final Project</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+
+  <!-- =============================================
+       HOME / HERO
+       ============================================= -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <span class="hero-label reveal-label">Portfolio 2026</span>
+      <h1 class="hero-title">
+        <span class="reveal-word">Art</span><br />
+        <em class="reveal-word delay-1">Portfolio</em>
+      </h1>
+      <p class="hero-subtitle reveal-up">Exploring perception, time and inner chaos</p>
+
+      <div class="hero-intro reveal-up delay-2">
+        <p>
+          A visual exploration by <strong>Franco Yazigi</strong> — a series of works
+          interrogating the boundaries between inner experience and outward reality.
+        </p>
+      </div>
+
+      <a href="#gallery" class="hero-cta reveal-up delay-3">
+        View Works
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M12 5v14M5 12l7 7 7-7" />
+        </svg>
+      </a>
+    </div>
+
+    <div class="hero-image">
+      <!--
+        REPLACE: Place your featured/hero image file at images/hero.jpg
+        Recommended: use a crop or full view of your strongest artwork.
+      -->
+      <img src="images/artwork1.jpg" alt="Featured artwork — Fragmented Reality" />
+      <div class="hero-image-label">Featured Work</div>
+    </div>
+  </section>
+
+
+  <!-- =============================================
+       GALLERY / PROJECTS
+       ============================================= -->
+  <section class="gallery" id="gallery">
+    <div class="section-header">
+      <span class="section-label">Selected Works</span>
+      <h2 class="section-title">Projects</h2>
+      <p class="section-desc">Three works exploring perception, temporality, and the internal landscape.</p>
+    </div>
+
+    <div class="gallery-grid">
+
+      <!-- ARTWORK CARD 1 -->
+      <article
+        class="artwork-card"
+        data-project="1"
+        tabindex="0"
+        role="button"
+        aria-label="Open Fragmented Reality"
+      >
+        <div class="card-image">
+          <!--
+            REPLACE: Place artwork 1 image at images/artwork1.jpg
+            This work: hand-drawn tree with geometric fragments
+          -->
+          <img src="images/artwork1.jpg" alt="Fragmented Reality" />
+          <div class="card-overlay"><span>View Work →</span></div>
+        </div>
+        <div class="card-info">
+          <span class="card-number">01</span>
+          <h3 class="card-title">Fragmented Reality</h3>
+          <p class="card-tagline">What is truth?</p>
+        </div>
+      </article>
+
+      <!-- ARTWORK CARD 2 -->
+      <article
+        class="artwork-card"
+        data-project="2"
+        tabindex="0"
+        role="button"
+        aria-label="Open Lost in Time"
+      >
+        <div class="card-image">
+          <!--
+            REPLACE: Place artwork 2 image at images/artwork2.jpg
+            This work: paper cutouts — stars, moon, celestial forms
+          -->
+          <img src="images/artwork2.png" alt="Lost in Time" />
+          <div class="card-overlay"><span>View Work →</span></div>
+        </div>
+        <div class="card-info">
+          <span class="card-number">02</span>
+          <h3 class="card-title">Lost in Time</h3>
+          <p class="card-tagline">Moments fade away...</p>
+        </div>
+      </article>
+
+      <!-- ARTWORK CARD 3 -->
+      <article
+        class="artwork-card"
+        data-project="3"
+        tabindex="0"
+        role="button"
+        aria-label="Open Chaos Within"
+      >
+        <div class="card-image">
+          <!--
+            REPLACE: Place artwork 3 image at images/artwork3.jpg
+            This work: digital triptych — fire, fragmentation, inner chaos
+          -->
+          <img src="images/artwork3.jpg" alt="Chaos Within" />
+          <div class="card-overlay"><span>View Work →</span></div>
+        </div>
+        <div class="card-info">
+          <span class="card-number">03</span>
+          <h3 class="card-title">Chaos Within</h3>
+          <p class="card-tagline">Can you silence the storm?</p>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+
+  <!-- =============================================
+       MODAL 1 — Fragmented Reality
+       ============================================= -->
+  <div class="modal" id="modal-1" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
+    <div class="modal-backdrop"></div>
+    <div class="modal-container">
+
+      <button class="modal-close" aria-label="Close project view">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <path d="M18 6L6 18M6 6l12 12" />
+        </svg>
+      </button>
+
+      <div class="modal-content">
+        <div class="modal-image-wrap">
+          <img src="images/artwork1.jpg" alt="Fragmented Reality — full view" class="modal-img" />
+        </div>
+
+        <div class="modal-text">
+          <span class="modal-number">01 / 03</span>
+          <h2 id="modal-1-title" class="modal-title">Fragmented Reality</h2>
+          <p class="modal-tagline"><em>What is truth?</em></p>
+          <p class="modal-medium">Mixed media on paper &nbsp;·&nbsp; 2026</p>
+
+          <div class="modal-section">
+            <h4>Concept</h4>
+            <p>
+              Reality has never been a singular, stable object of perception. This work enters
+              that tension — the gap between what the eye receives and what the mind constructs —
+              and presses on it. Drawing from phenomenological philosophy, the piece stages the
+              viewer's own perceptual apparatus as its subject: the act of seeing is itself what
+              is being seen.
+            </p>
+            <p>
+              The central question — <em>what is truth?</em> — is posed not rhetorically but
+              formally: the composition refuses to resolve into any unified reading, enacting
+              the very impossibility it describes.
+            </p>
+          </div>
+
+          <div class="modal-section">
+            <h4>Visual Analysis</h4>
+            <p>
+              The composition is organized around a central dark mass — an organic, tree-like
+              form rendered in dense blacks and browns that radiates outward into branching
+              extensions. This anchoring element provides structural gravity, but the work
+              refuses coherence: scattered across the field are autonomous geometric fragments —
+              triangles, diamonds, irregular polygons — rendered in high-saturation primaries
+              and secondaries that bear no spatial or tonal relation to the central form.
+              They float, untethered, in a white ground that functions not as empty background
+              but as the condition of possibility for all the visual events occurring within it.
+            </p>
+            <p>
+              The chromatic logic is deliberately dissonant. The vivid yellows, magentas,
+              greens, and oranges of the peripheral fragments insist on their own independent
+              presence, resisting subordination to the dominant form at center. This tension
+              between the organic and the geometric, the contained and the dispersed, enacts
+              the cognitive experience of perception under pressure: we reach for pattern,
+              for wholeness — and the work refuses it.
+            </p>
+            <p>
+              The triptych structure of the support itself — the work's ground is divided
+              into panels — introduces a meta-commentary: reality, the piece seems to argue,
+              is always already fragmented before we begin to look at it. Symbolically, the
+              central tree reads simultaneously as a living system and as an exposed skeleton —
+              something that once held leaves, held color, held coherence, and has been
+              stripped to its essential, unresolvable structure.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- =============================================
+       MODAL 2 — Lost in Time
+       ============================================= -->
+  <div class="modal" id="modal-2" role="dialog" aria-modal="true" aria-labelledby="modal-2-title">
+    <div class="modal-backdrop"></div>
+    <div class="modal-container">
+
+      <button class="modal-close" aria-label="Close project view">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <path d="M18 6L6 18M6 6l12 12" />
+        </svg>
+      </button>
+
+      <div class="modal-content">
+        <div class="modal-image-wrap">
+          <img src="images/artwork2.png" alt="Lost in Time — full view" class="modal-img" />
+        </div>
+
+        <div class="modal-text">
+          <span class="modal-number">02 / 03</span>
+          <h2 id="modal-2-title" class="modal-title">Lost in Time</h2>
+          <p class="modal-tagline"><em>Moments fade away...</em></p>
+          <p class="modal-medium">Paper collage &nbsp;·&nbsp; 2026</p>
+
+          <div class="modal-section">
+            <h4>Concept</h4>
+            <p>
+              Time cannot be held. This work begins from that impossibility and asks what
+              remains when the present becomes the past — what residue, what trace, what
+              negative space marks the place where a moment existed and no longer does.
+              Memory, the work proposes, is not a recording but an editing: what we retain
+              is already shaped by what we have already lost.
+            </p>
+          </div>
+
+          <div class="modal-section">
+            <h4>Visual Analysis</h4>
+            <p>
+              The work deploys paper — inherently fragile, already marked by time in its
+              manufacture — as a carrier of temporal meaning. The act of cutting is central:
+              the artist removes material to create form, and the voids left behind are
+              compositionally equal to the pieces that remain. Stars appear twice in the
+              composition: once as cut-away negative spaces within the beige sheets, once
+              as positive forms set free from their ground. The moon, rendered in warm gold,
+              emerges from its parent sheet as a crescent — a temporal symbol so ancient as
+              to precede recorded history.
+            </p>
+            <p>
+              The palette is deliberately restrained: beige, cream, an accent blue, gold.
+              These are the colors of old paper, of documents worn by time, of dawn and dusk
+              — the liminal temporal zones where one state transitions into another. The blue
+              rectangle with its circular void reads as a window into night sky; the circular
+              form, removed, floats nearby as a separate object — the same shape, the same
+              scale, but now unmoored. This separation of a thing from its origin is the
+              formal correlate of memory: the trace persists, but the context that gave it
+              meaning has receded.
+            </p>
+            <p>
+              The compositional arrangement is horizontal and spacious, resisting dramatic
+              urgency. Time here is not a crisis — it is the quiet, irreversible passage of
+              what was once present into what is merely recalled. The scattered stars at
+              the base of the composition suggest that time does not flow in a single
+              direction but disperses: outward, downward, into the margins.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- =============================================
+       MODAL 3 — Chaos Within
+       ============================================= -->
+  <div class="modal" id="modal-3" role="dialog" aria-modal="true" aria-labelledby="modal-3-title">
+    <div class="modal-backdrop"></div>
+    <div class="modal-container">
+
+      <button class="modal-close" aria-label="Close project view">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <path d="M18 6L6 18M6 6l12 12" />
+        </svg>
+      </button>
+
+      <div class="modal-content">
+        <div class="modal-image-wrap">
+          <img src="images/artwork3.jpg" alt="Chaos Within — full view" class="modal-img" />
+        </div>
+
+        <div class="modal-text">
+          <span class="modal-number">03 / 03</span>
+          <h2 id="modal-3-title" class="modal-title">Chaos Within</h2>
+          <p class="modal-tagline"><em>Can you silence the storm?</em></p>
+          <p class="modal-medium">Digital collage / Mixed media &nbsp;·&nbsp; 2026</p>
+
+          <div class="modal-section">
+            <h4>Concept</h4>
+            <p>
+              The interior life does not arrange itself for presentation. This work refuses
+              the demand that inner experience be calm, legible, or resolved, and instead
+              inhabits the turbulence directly — not as pathology to be diagnosed or
+              disorder to be corrected, but as an authentic condition of consciousness
+              worth attending to. In asking <em>can you silence the storm?</em>, the piece
+              does not presume an answer; it holds the question open as a space of honest
+              self-inquiry.
+            </p>
+          </div>
+
+          <div class="modal-section">
+            <h4>Visual Analysis</h4>
+            <p>
+              The work is organized as a triptych — three panels sharing chromatic and
+              thematic logic while maintaining distinct visual territories. The warm palette
+              of deep reds, burnt oranges, and aged golds dominates all three registers,
+              creating a temperature of intensity that operates affectively before it
+              operates iconographically: the viewer is pulled into heat before they begin
+              to read.
+            </p>
+            <p>
+              Individual panels develop specific metaphorical arguments. A figure whose
+              cranial architecture gives way to fire — releasing not only destruction but
+              butterflies — complicates any simple reading of chaos as mere ruin. The
+              butterfly's iconographic association with metamorphosis suggests that the
+              disorder depicted is not purely destructive but potentially generative: chaos
+              as the precondition of transformation. A solitary figure ascending stone
+              stairs beneath a cosmic clockface stages the individual's movement through
+              time as simultaneously heroic and absurd — progress against an indifferent
+              scale. A fragmented sculptural face — cracked, held by hands that may be
+              assembling or preventing further collapse — frames identity as something
+              always under pressure, always in process.
+            </p>
+            <p>
+              Formally, the piece draws from the tradition of Surrealist photomontage and
+              contemporary collage aesthetics, deploying juxtapositions of scale, texture,
+              and symbolic register as its primary compositional strategy. Meaning does not
+              inhere in any single element but emerges from the productive dissonance
+              between them — a formal logic that mirrors the thematic: chaos is not the
+              absence of structure, but a different, more difficult kind of order.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- =============================================
+       FINAL PROJECT
+       ============================================= -->
+  <section class="final-project" id="final-project">
+    <div class="final-inner">
+      <span class="section-label">Coming Soon</span>
+      <h2 class="final-title">Final Project</h2>
+      <p class="final-desc">
+        The culminating work of this series is currently in development.
+        It will synthesize the themes of perception, time, and internal chaos
+        into a single, integrated piece.
+      </p>
+
+      <div class="final-placeholder">
+        <div class="placeholder-content">
+          <span class="placeholder-icon">◈</span>
+          <p>Work in Progress</p>
+          <span class="placeholder-dot"></span>
+        </div>
+      </div>
+
+      <!-- REPLACE: When final project is ready, replace the placeholder above with:
+           <img src="images/artwork_final.jpg" alt="Final Project" class="final-img" />
+           and add a data-project="4" modal following the same structure as modals 1–3. -->
+    </div>
+  </section>
+
+
+  <!-- =============================================
+       ABOUT
+       ============================================= -->
+  <section class="about" id="about">
+    <div class="about-inner">
+
+      <div class="about-text">
+        <span class="section-label">About</span>
+        <h2 class="about-title">The Artist</h2>
+
+        <!--
+          REPLACE: Replace the placeholder text below with your own artist statement.
+          Keep it in first or third person, concise, and focused on your practice and interests.
+        -->
+        <p class="about-body">
+          Franco Yazigi is a visual artist currently developing a practice at the
+          intersection of conceptual inquiry and material experimentation. Working
+          across drawing, collage, and digital media, their work investigates the
+          unstable boundaries between perception and reality, the subjective experience
+          of time, and the visual representation of internal emotional states.
+        </p>
+        <p class="about-body">
+          Informed by phenomenology, Surrealist traditions, and contemporary visual
+          culture, the work asks how images can carry psychological weight — and what
+          it means to make visible what ordinarily remains hidden. These works were
+          produced as part of an ongoing exploration of what it means to see,
+          remember, and feel.
+        </p>
+
+      </div>
+
+      <div class="about-visual">
+        <!--
+          REPLACE: Add a portrait photo at images/portrait.jpg
+          Or swap for another artwork image — whatever fits your portfolio identity.
+        -->
+        <div class="portrait-frame">
+          <img src="images/portrait.jpg" alt="Artist portrait" />
+          <div class="portrait-caption">
+            Franco Yazigi &nbsp;·&nbsp; 2026
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- =============================================
+       FOOTER
+       ============================================= -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <p class="footer-name">Franco Yazigi</p>
+      <p class="footer-copy">© 2026 &nbsp;·&nbsp; Art Portfolio &nbsp;·&nbsp; All rights reserved</p>
+    </div>
+  </footer>
+
+
+  <script src="script.js"></script>
+</body>
+</html>
