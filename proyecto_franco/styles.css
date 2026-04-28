@@ -69,10 +69,6 @@ a {
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
 
-/* Hide default cursor on desktop */
-@media (pointer: fine) {
-  * { cursor: none !important; }
-}
 
 
 /* ===============================================
@@ -230,6 +226,45 @@ a {
   margin: 0 auto;
   padding-left: var(--pad-x);
   padding-right: var(--pad-x);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 50% 60% at 85% 35%, rgba(201, 150, 58, 0.08) 0%, transparent 55%),
+    radial-gradient(ellipse 45% 55% at 15% 75%, rgba(13, 27, 42, 0.05) 0%, transparent 50%);
+  z-index: 0;
+  animation: heroAmbient 7s ease-in-out infinite alternate;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    circle 420px at var(--mouse-x, 80%) var(--mouse-y, 40%),
+    rgba(201, 150, 58, 0.07) 0%,
+    transparent 65%
+  );
+  z-index: 0;
+  transition: background 0.4s ease;
+}
+
+@keyframes heroAmbient {
+  from { opacity: 0.5; }
+  to   { opacity: 1; }
+}
+
+.hero-content,
+.hero-image {
+  position: relative;
+  z-index: 1;
 }
 
 .hero-content {
@@ -958,44 +993,6 @@ img {
 }
 
 
-/* ---- CUSTOM CURSOR ---- */
-.cursor-dot,
-.cursor-ring {
-  position: fixed;
-  top: 0; left: 0;
-  pointer-events: none;
-  z-index: 9998;
-  border-radius: 50%;
-  will-change: transform;
-}
-
-.cursor-dot {
-  width: 6px; height: 6px;
-  background: var(--ink);
-  margin: -3px 0 0 -3px;
-  transition: opacity 0.2s;
-}
-
-.cursor-ring {
-  width: 36px; height: 36px;
-  border: 1.5px solid rgba(24, 24, 24, 0.45);
-  margin: -18px 0 0 -18px;
-  transition: width 0.3s var(--ease),
-              height 0.3s var(--ease),
-              margin 0.3s var(--ease),
-              border-color 0.3s;
-}
-
-.cursor-ring.expanded {
-  width: 56px; height: 56px;
-  margin: -28px 0 0 -28px;
-  border-color: rgba(24, 24, 24, 0.25);
-}
-
-/* Hide cursor on mobile */
-@media (pointer: coarse) {
-  .cursor-dot, .cursor-ring { display: none; }
-}
 
 
 /* ---- HERO TEXT REVEAL ANIMATIONS ---- */
@@ -1084,52 +1081,53 @@ img {
 .artwork-card:nth-child(3) .card-info  { transition-delay: 0.74s; }
 
 
-/* ---- MARQUEE STRIP ---- */
-.marquee-strip {
-  width: 100%;
-  overflow: hidden;
-  background: var(--ink);
-  padding: 1.1rem 0;
-  border-top: 1px solid rgba(255,255,255,0.06);
-  border-bottom: 1px solid rgba(255,255,255,0.06);
-}
-
-.marquee-track {
-  display: flex;
-  align-items: center;
-  gap: 2.5rem;
-  width: max-content;
-  animation: marqueeScroll 22s linear infinite;
-}
-
-.marquee-strip:hover .marquee-track {
-  animation-play-state: paused;
-}
-
-.marquee-track span {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-size: clamp(0.9rem, 1.5vw, 1.1rem);
-  color: rgba(255, 255, 255, 0.55);
-  white-space: nowrap;
-  letter-spacing: 0.03em;
-}
-
-.marquee-track .marquee-dot {
-  font-style: normal;
-  color: var(--accent);
-  font-family: var(--font-sans);
-}
-
-@keyframes marqueeScroll {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
 
 
 /* ---- PARALLAX CONTAINER ---- */
 .hero-image-inner {
   width: 100%;
   height: 100%;
+  will-change: transform;
+}
+
+
+/* ---- SCROLL PROGRESS BAR ---- */
+.scroll-progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  width: 0%;
+  background: var(--accent);
+  z-index: 10000;
+  transition: width 0.08s linear;
+  pointer-events: none;
+}
+
+
+/* ---- GRAIN OVERLAY ---- */
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9990;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 300px 300px;
+  animation: grainMove 0.45s steps(1) infinite;
+}
+
+@keyframes grainMove {
+  0%   { background-position: 0px 0px; }
+  25%  { background-position: -60px 30px; }
+  50%  { background-position: 20px -40px; }
+  75%  { background-position: -80px -20px; }
+}
+
+
+/* ---- 3D CARD TILT ---- */
+.artwork-card {
+  transition: transform 0.18s var(--ease);
+  transform-style: preserve-3d;
   will-change: transform;
 }

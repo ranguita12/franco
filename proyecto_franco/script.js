@@ -14,34 +14,12 @@ window.addEventListener('load', () => {
 });
 
 
-/* ---- CUSTOM CURSOR ---- */
-const cursorDot  = document.getElementById('cursorDot');
-const cursorRing = document.getElementById('cursorRing');
-
-let mouseX = 0, mouseY = 0;
-let ringX  = 0, ringY  = 0;
-
-document.addEventListener('mousemove', e => {
-  mouseX = e.clientX;
-  mouseY = e.clientY;
-  // Dot follows instantly
-  cursorDot.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
-});
-
-// Ring follows with smooth lag
-(function animateRing() {
-  ringX += (mouseX - ringX) * 0.1;
-  ringY += (mouseY - ringY) * 0.1;
-  cursorRing.style.transform = `translate(${ringX}px, ${ringY}px)`;
-  requestAnimationFrame(animateRing);
-})();
-
-// Expand ring over interactive elements
-const hoverTargets = 'a, button, .artwork-card, .about-interests span, .hero-cta';
-document.querySelectorAll(hoverTargets).forEach(el => {
-  el.addEventListener('mouseenter', () => cursorRing.classList.add('expanded'));
-  el.addEventListener('mouseleave', () => cursorRing.classList.remove('expanded'));
-});
+/* ---- SCROLL PROGRESS BAR ---- */
+const progressBar = document.getElementById('scrollProgress');
+window.addEventListener('scroll', () => {
+  const total = document.documentElement.scrollHeight - window.innerHeight;
+  progressBar.style.width = (window.scrollY / total * 100) + '%';
+}, { passive: true });
 
 
 /* ---- NAVBAR: scroll shadow ---- */
@@ -184,4 +162,29 @@ const revealObserver = new IntersectionObserver(entries => {
 fadeTargets.forEach(el => {
   el.classList.add('fade-in');
   revealObserver.observe(el);
+});
+
+
+/* ---- HERO MOUSE SPOTLIGHT ---- */
+const heroSection = document.querySelector('.hero');
+if (heroSection) {
+  heroSection.addEventListener('mousemove', e => {
+    const rect = heroSection.getBoundingClientRect();
+    heroSection.style.setProperty('--mouse-x', ((e.clientX - rect.left) / rect.width * 100).toFixed(1) + '%');
+    heroSection.style.setProperty('--mouse-y', ((e.clientY - rect.top)  / rect.height * 100).toFixed(1) + '%');
+  });
+}
+
+
+/* ---- 3D CARD TILT ---- */
+document.querySelectorAll('.artwork-card').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const rect = card.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width  - 0.5) * 10;
+    const y = ((e.clientY - rect.top)  / rect.height - 0.5) * -10;
+    card.style.transform = `perspective(700px) rotateX(${y}deg) rotateY(${x}deg) scale(1.02)`;
+  });
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = '';
+  });
 });
