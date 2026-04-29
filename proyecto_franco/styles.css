@@ -371,10 +371,23 @@ a {
    GALLERY
    =============================================== */
 .gallery {
+  background: var(--navy);
+  color: var(--white);
   padding: var(--section-v) var(--pad-x);
-  max-width: var(--max-w);
-  margin: 0 auto;
 }
+
+.gallery .section-header,
+.gallery .gallery-grid {
+  max-width: var(--max-w);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.gallery .section-label  { color: rgba(255,255,255,0.35); }
+.gallery .section-title  { color: var(--white); }
+.gallery .card-number    { color: rgba(255,255,255,0.35); }
+.gallery .card-title     { color: var(--white); }
+.gallery .card-tagline   { color: rgba(255,255,255,0.5); font-style: italic; }
 
 .gallery-grid {
   display: grid;
@@ -617,6 +630,45 @@ a {
   margin-bottom: 0.875rem;
 }
 .modal-section p:last-child { margin-bottom: 0; }
+
+
+/* ===============================================
+   DISCUSSION BOARDS
+   =============================================== */
+.discussion-boards {
+  padding: var(--section-v) var(--pad-x);
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+
+.db-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.25rem, 3vw, 2.25rem);
+}
+
+/* Two-image panel inside the Bad Bunny modal */
+.modal-image-wrap--pair {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  background: #111;
+}
+
+.modal-img--half {
+  width: 100%;
+  flex: 1;
+  object-fit: cover;
+  min-height: 0;
+}
+
+@media (max-width: 960px) {
+  .db-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 580px) {
+  .db-grid { grid-template-columns: 1fr; }
+}
 
 
 /* ===============================================

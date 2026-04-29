@@ -130,6 +130,28 @@ document.addEventListener('keydown', e => {
 });
 
 
+/* ---- DISCUSSION BOARD MODALS ---- */
+const dbCards = document.querySelectorAll('.db-card');
+
+function openDbModal(id) {
+  const modal = document.getElementById(`db-modal-${id}`);
+  if (!modal) return;
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  requestAnimationFrame(() => modal.querySelector('.modal-close')?.focus());
+}
+
+dbCards.forEach(card => {
+  card.addEventListener('click', () => openDbModal(card.dataset.db));
+  card.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      openDbModal(card.dataset.db);
+    }
+  });
+});
+
+
 /* ---- ACTIVE NAV LINK ---- */
 const sections   = document.querySelectorAll('section[id]');
 const navAnchors = document.querySelectorAll('.nav-links a');
@@ -148,7 +170,7 @@ sections.forEach(s => sectionObserver.observe(s));
 
 /* ---- SCROLL REVEALS (clip-path for cards, fade for the rest) ---- */
 const fadeTargets = document.querySelectorAll(
-  '.artwork-card, .section-header, .about-text, .about-visual, .final-inner'
+  '.artwork-card, .section-header, .about-text, .about-visual, .final-inner, .db-entry'
 );
 
 const revealObserver = new IntersectionObserver(entries => {
