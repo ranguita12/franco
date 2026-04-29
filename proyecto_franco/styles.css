@@ -650,16 +650,18 @@ a {
 /* Two-image panel inside the Bad Bunny modal */
 .modal-image-wrap--pair {
   display: flex;
-  flex-direction: column;
-  overflow-y: auto;
+  flex-direction: row;
+  overflow: hidden;
   background: #111;
+  gap: 2px;
 }
 
 .modal-img--half {
-  width: 100%;
   flex: 1;
-  object-fit: cover;
-  min-height: 0;
+  width: 0;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
 }
 
 @media (max-width: 960px) {
